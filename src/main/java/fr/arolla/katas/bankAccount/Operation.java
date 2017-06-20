@@ -4,38 +4,39 @@ import java.util.Date;
 
 public class Operation {
 	public enum Type {
-	    DEPOSIT, WITHDRAWAL
+		DEPOSIT, WITHDRAWAL
 	}
-	
-	private Date date;
-	private Type type;
-	private int amount;
-	private int accountBalanceAfterOperation;
-	
-	public Operation(Type type, int amount, int accountBalanceAfterOperation){
+
+	private final Date date;
+	private final Type type;
+	private final Money amount;
+	private final Money accountBalanceAfterOperation;
+
+	public Operation(Type type, Money amount, Money accountBalanceAfterOperation) {
 		date = new Date();
 		this.type = type;
-		this.amount = amount;
-		this.accountBalanceAfterOperation = accountBalanceAfterOperation;
+		this.amount = new Money(amount.getAmountInEuros());
+		this.accountBalanceAfterOperation = new Money(accountBalanceAfterOperation.getAmountInEuros());
 	}
-	
+
 	public Date getDate() {
 		return date;
 	}
+
 	public Type getType() {
 		return type;
 	}
-	public int getAmount() {
+
+	public Money getAmount() {
 		return amount;
 	}
-	public int getAccountBalanceAfterOperation() {
+
+	public Money getAccountBalanceAfterOperation() {
 		return accountBalanceAfterOperation;
 	}
-	
+
 	public String toString() {
-		return "Operation: (date: " + date + 
-				", type: " + type + 
-				", amount: " + amount +
-				", accountBalanceAfterOperation: " + accountBalanceAfterOperation + ")";
+		return "Operation: (date: " + date + ", type: " + type + ", amount: " + amount
+				+ ", accountBalanceAfterOperation: " + accountBalanceAfterOperation + ")";
 	}
 }

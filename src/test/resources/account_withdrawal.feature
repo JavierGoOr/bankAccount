@@ -19,7 +19,7 @@ In order to retrieve some or all of my savings
   Scenario Outline: Make a withdrawal of an amount exceeding the account balance
     Given the account balance of the user is <initial balance> euros
     When the user makes a withdrawal of <withdrawal amount> euros
-    Then the operation is denied
+    Then the operation should be denied
     And the account balance of the user should be <initial balance> euros
     
     Examples:
